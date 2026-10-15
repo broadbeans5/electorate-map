@@ -23,10 +23,11 @@
   const map = L.map('map').setView([-31.95, 116.0], 7);
 
   // Background map
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-      }).addTo(map);
+  L.tileLayer('https://basemaps.cartocdn.com/rastertiles/positron/{z}/{x}/{y}.png?key=cb1_4l2d_1_0b275e018b82cde30534dec0', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                 '© <a href="https://carto.com/attribution/">CARTO</a>',
+    maxZoom: 20
+  }).addTo(map)
 
       // show the scale bar on the lower left corner
       L.control.scale({imperial: true, metric: true}).addTo(map);
