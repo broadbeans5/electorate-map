@@ -1,0 +1,20 @@
+[
+    {
+      "Name": "Example group",
+      "lat": "-31.95",
+      "lng": "115.86",
+      "description": "Details about this group and what they do.",
+      "contact": "hello@example.org.au",
+      "address": "Perth, WA",
+      "link": "https://www.ccwa.org.au/"
+    },
+    {
+      "name": "Another group",
+      "lat": "-32.05",
+      "lng": "115.75",
+      "description": "Details about this group and what they do.",
+      "contact": "contact@example.org.au",
+      "address": "Perth, WA",
+      "link": "https://www.ccwa.org.au/"
+  }
+  ]
