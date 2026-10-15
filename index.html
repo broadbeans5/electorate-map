@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Environmental Campaign Map</title>
+
+  <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <style>
+    html, body { margin: 0; height: 100%; }
+    #map { height: 100vh; width: 100%; }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  // Centre the map on Perth and south-west WA
+  const map = L.map('map').setView([-31.95, 116.0], 7);
+
+  // Background map
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+      }).addTo(map);
+
+      // show the scale bar on the lower left corner
+      L.control.scale({imperial: true, metric: true}).addTo(map);
+
+  // LAYER 1: Electorate boundaries (illustrative only)
+  const electorates = L.layerGroup();
+
+  L.polygon([
+    [-31.75, 115.65],
+    [-31.75, 116.05],
+    [-32.05, 116.05],
+    [-32.05, 115.65]
+  ], {
+    color: '#816E94',
+    weight: 2,
+    fillOpacity: 0.08
+  }).bindPopup('Example electorate — replace with actual boundaries')
+    .addTo(electorates);
+
+  // LAYER 2: Environmental group locations
+  const groups = L.layerGroup();
+
+  L.marker([-31.95, 115.86])
+    .bindPopup('<strong>Example group</strong><br>Perth, WA')
+    .addTo(groups);
+
+  L.marker([-32.05, 115.75])
+    .bindPopup('<strong>Another group</strong><br>Example location')
+    .addTo(groups);
+
+  // LAYER 3: Environmental issue areas (illustrative only)
+  const issues = L.layerGroup();
+
+  L.polygon([
+    [-32.10, 115.70],
+    [-32.15, 115.90],
+    [-32.30, 115.85],
+    [-32.25, 115.65]
+  ], {
+    color: '#ED7D3A',
+    fillColor: '#ED7D3A',
+    fillOpacity: 0.35,
+    weight: 2
+  }).bindPopup('<strong>Example issue</strong><br>Replace with impact details.')
+    .addTo(issues);
+
+  // Add layer toggles
+  L.control.layers(null, {
+    'Electorate boundaries': electorates,
+    'Environmental groups': groups,
+    'Environmental issues': issues
+  }, { collapsed: false }).addTo(map);
+
+  // Show all layers initially
+  electorates.addTo(map);
+  groups.addTo(map);
+  issues.addTo(map);
+</script>
+
+</body>
+</html>
